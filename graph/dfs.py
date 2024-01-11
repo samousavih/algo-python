@@ -1,5 +1,5 @@
 from queue import LifoQueue 
-from graph_adjacency_list import get_test_graph_5,Graph
+from graph_adjacency_list import get_test_graph_5, get_test_graph_1, Graph
 
 def dfs(graph:Graph,root):
     visited= set()
@@ -13,7 +13,8 @@ def dfs(graph:Graph,root):
             process(current_node)
             for node in graph.adjacency_list[current_node]:
                 to_process.put(node)
-                parents[node] = current_node
+                if node not in parents:
+                    parents[node] = current_node
     return parents
         
 def process(node):
@@ -24,16 +25,16 @@ def dfs_recursive(graph:Graph,root,visited= set(),parents = {}):
         process(root)
         visited.add(root)
         for node in graph.adjacency_list[root]:
-            parents[node] = root
+            if node not in parents:
+                parents[node] = root
             dfs_recursive(graph,node,visited,parents)
     return parents
 
-
-graph = get_test_graph_5()
+graph = get_test_graph_1()
 graph.show()
-parents = dfs(graph,3)
+parents = dfs(graph,0)
 print(f"Dfs with stack : {parents}")
-parents = dfs_recursive(graph,3)
+parents = dfs_recursive(graph,0)
 print(f"Dfs recursive : {parents}")       
 
 
