@@ -17,7 +17,9 @@ class Graph():
             self.adjacency_list[node2].append(node1)
             return
         print(f"Edge {node1} -> {node2} already exist!")
-
+    
+    def get_neighbors(self,node):
+        return self.adjacency_list[node]
 
     def show(self):
         print(self.adjacency_list)

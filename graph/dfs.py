@@ -6,6 +6,7 @@ def dfs(graph:Graph,root):
     parents = {}
     to_process = LifoQueue()
     to_process.put(root)
+    parents[root] = root
     while not to_process.empty():
         current_node = to_process.get()
         if not current_node in visited:
@@ -30,11 +31,15 @@ def dfs_recursive(graph:Graph,root,visited= set(),parents = {}):
             dfs_recursive(graph,node,visited,parents)
     return parents
 
-graph = get_test_graph_1()
-graph.show()
-parents = dfs(graph,0)
-print(f"Dfs with stack : {parents}")
-parents = dfs_recursive(graph,0)
-print(f"Dfs recursive : {parents}")       
+
+def main():
+    graph = get_test_graph_1()
+    graph.show()
+    parents = dfs(graph,0)
+    print(f"Dfs with stack : {parents}")
+    parents = dfs_recursive(graph,0)
+    print(f"Dfs recursive : {parents}")       
 
 
+if __name__ == "__main__":
+    main() 

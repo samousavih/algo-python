@@ -20,9 +20,14 @@ class DirectedGraph():
         print(f"Edge {node1} -> {node2} already exist!")
     
     def get_nodes(self):
-        return self.adjacency_list.keys()
+        return list(self.adjacency_list.keys())
     def get_neighbors(self,node):
         return self.adjacency_list[node]
+    def get_inverse_neighbors(self, target_node):
+        for node in self.adjacency_list:
+            if target_node in self.adjacency_list[node]:
+                yield node 
+
 
 
 
