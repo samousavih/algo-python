@@ -19,6 +19,11 @@ def dfs_reverse(graph:DirectedGraph,root):
     return parents
 
 def is_strongly_connected(graph:DirectedGraph):
+    """
+    To make sure a graph is fully connected each two node in graph should be reachable from each other. 
+    So here we make sure starting form an arbitrary node we reach all other nodes and the node is reachable from every other.
+    For the first part we do a DFS and for the second part we do a reverse DFS or a DFS which only uses incoming edges to each node.
+    """
     nodes = list(graph.get_nodes())
     tree = dfs(graph,nodes[0])
     if len(tree) != len(nodes):
@@ -30,6 +35,12 @@ def is_strongly_connected(graph:DirectedGraph):
 
 
 def strongly_connected_components(graph:DirectedGraph):
+    """
+    This is done using tow DFS passes. The key to understanding this algo is to imagine the graph in strongly connected components as big nodes and edges between 
+    those components. Another key point is if C1---->C2 meaning there is an edge from C1 to C2 there is at least one node in C1 which finishes after all nodes in C2.
+    So if we build a stack in the order of finishing time of nodes in DFS and then do another reverse DFS all of connected components would be strongly connected components.
+    Reason is in the reverse graph it would be C1<-----C2 and if you do a DFS on C1 you would never get nodes of C2.
+    """
     visited = set()
     finished_stack = []
     to_visit_stack = []

@@ -20,6 +20,9 @@ class Graph():
     
     def get_neighbors(self,node):
         return self.adjacency_list[node]
+    
+    def get_nodes(self):
+        return list(self.adjacency_list.keys())
 
     def show(self):
         print(self.adjacency_list)

@@ -2,6 +2,10 @@ from queue import LifoQueue
 from directed_graph_adjacency_list import DirectedGraph
 
 def topological_sort(graph:DirectedGraph):
+    """
+    Starts by calculating in degree of each node and then does a DFS starting with nodes with in degree 0.
+    When discovering neighbors of a node decreases the in degree of them by one and continues the DFS for the ones with in degree 0.
+    """
 
     visited = set()
     to_visit = LifoQueue()

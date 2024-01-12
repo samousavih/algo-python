@@ -3,7 +3,11 @@ from directed_graph_adjacency_list import DirectedGraph, get_test_graph_1, get_t
 
 
 def detect_cycle(graph: DirectedGraph):
-
+    """
+    The key is if from a finished node i DFS there is an edge to a visited node there is a cycle. So we need to track the status of a node during DFS.
+    If for a node all of it's children have been finished that node is finished too. To achieve it each time we visit a node we put that back on stack and the second time we
+    see that that node is finished.
+    """
     VISITED = 1
     PROCESSED = 2
     status = {}
