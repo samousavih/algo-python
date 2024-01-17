@@ -60,6 +60,19 @@ class max_heap:
                 current = self.right_index(current)
     def get_elements(self):
         return self.array[:self.size]
+    def heapify(self,elements):
+        self.array = elements
+        self.size = len(elements)
+        for index,_ in enumerate(self.array[:int(self.size/2)]):
+            self.sift_down(index)
+        return self
+    
+def heap_sort(elements):
+    heap = max_heap()
+    heap.heapify(elements)
+    for _ in range(len(elements)):
+        yield heap.extract_max()
+    
 
 def test_max_heap_insert():
     h = max_heap()
@@ -79,5 +92,9 @@ def test_max_heap_extract_max():
     assert h.extract_max() == (5,'d')
     assert h.get_elements()[0] == (4,'b')
 
+def test_heap_sort():
+    assert list(heap_sort([(5,"d"),(2,"a"),(4,"b"),(3,"c"),(1,"e")])) == [(5,"d"),(4,"b"),(3,"c"),(2,"a"),(1,"e")]
+
 test_max_heap_insert()
 test_max_heap_extract_max()
+test_heap_sort()
