@@ -1,7 +1,7 @@
 def merge_sort_recursive(array,start,end):
     if(start >= end): 
         return
-    mid = int((end-start)/ 2)+ start
+    mid = (end+start)//2
     merge_sort_recursive(array,start,mid)
     merge_sort_recursive(array,mid+1,end)
     merge(array,start,mid,end)
