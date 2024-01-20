@@ -30,12 +30,33 @@ def merge(array,start,mid,end):
                 k+=1
                 j+=1
 
+def merge_sort_bottom_up(array):
+    size=2
+    while size//2 <= len(array):
+        n=0
+        while n <= len(array):
+            start = n
+            end = (n+size-1)
+            if end >= len(array):
+                end = len(array)-1
+            mid = (start+end)//2
+            merge(array,start,mid,end)
+            n+=size
+        size*=2
+
 
 def test_merge_sort():
     array = [5,3,6,9,12,25,0]
-    array_copy = array
+    array_copy = array.copy()
     merge_sort_recursive(array,0,len(array)-1)
-    array_copy.sort
+    array_copy.sort()
+    assert array == array_copy
+def test_merge_sort_bottom_up():
+    array = [5,3,6,9,12,25,0]
+    array_copy = array.copy()
+    merge_sort_bottom_up(array)
+    array_copy.sort()
     assert array == array_copy
 
 test_merge_sort()
+test_merge_sort_bottom_up()
