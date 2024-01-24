@@ -13,7 +13,7 @@ def create_depth_linked_lists(node,depth, depth_linked_lists):
     if depth_linked_lists[depth] == None:
         depth_linked_lists[depth] = LinkedList(node.value)
     else:
-        depth_linked_lists[depth].next = LinkedList(node.value)
+        depth_linked_lists[depth].next = LinkedList(node.value) 
 
 class Node:
     def __init__(self, item):
