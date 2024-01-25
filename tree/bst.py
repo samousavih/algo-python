@@ -1,18 +1,21 @@
-class Node:
+class BST_Node:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
+        self.parent = None
 
     def insert(self, value):
         if value <= self.value:
             if self.left == None:
-                self.left = Node(value)
+                self.left = BST_Node(value)
+                self.left.parent = self
             else:
                 self.left.insert(value)
         if value > self.value:
             if self.right == None:
-                self.right = Node(value)
+                self.right = BST_Node(value)
+                self.right.parent = self
             else:
                 self.right.insert(value)
     def show(self):        
@@ -101,10 +104,18 @@ class Node:
                 successor = successor.left
             return successor,parent
         return self.left,self
+    def get_node(self,value):
+        if self.value == value:
+            return self
+        if self.left and value <= self.value:
+            return self.left.get_node(value)
+        if self.right and value > self.value:
+            return self.right.get_node(value)
+        return None
 
 
 def get_tree_1():
-    tree = Node(5)
+    tree = BST_Node(5)
     tree.insert(4)
     tree.insert(6)
     tree.insert(3)
@@ -113,15 +124,16 @@ def get_tree_1():
 
     return tree
 
-tree = get_tree_1()
-tree.show()
-print(f"count : {tree.get_count()}")
-print(f"is in tree 2 : {tree.is_in_tree(2)}")
-print(f"is in tree 8 : {tree.is_in_tree(8)}")
-print(f"height : {tree.get_hight()}")
-print(f"min : {tree.get_min()}")
-print(f"max : {tree.get_max()}")
-print(f"is bst : {tree.is_bst()}")
+def main():
+    tree = get_tree_1()
+    tree.show()
+    print(f"count : {tree.get_count()}")
+    print(f"is in tree 2 : {tree.is_in_tree(2)}")
+    print(f"is in tree 8 : {tree.is_in_tree(8)}")
+    print(f"height : {tree.get_hight()}")
+    print(f"min : {tree.get_min()}")
+    print(f"max : {tree.get_max()}")
+    print(f"is bst : {tree.is_bst()}")
 
 def test_tree_delete():
     tree = get_tree_1()
@@ -142,4 +154,5 @@ def test_tree_delete():
 
 test_tree_delete()
     
-
+if __name__ == "__main__":
+    main()
