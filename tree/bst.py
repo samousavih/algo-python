@@ -10,14 +10,16 @@ class BST_Node:
             if self.left == None:
                 self.left = BST_Node(value)
                 self.left.parent = self
+                return self.left
             else:
-                self.left.insert(value)
+                return self.left.insert(value)
         if value > self.value:
             if self.right == None:
                 self.right = BST_Node(value)
                 self.right.parent = self
+                return self.right
             else:
-                self.right.insert(value)
+                return self.right.insert(value)
     def show(self):        
         if self.left:
             self.left.show()

@@ -3,9 +3,15 @@ First Common Ancestor: Design an algorithm and write code to find the first comm
 of two nodes in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not
 necessarily a binary search tree. 
 """
+from bst import BST_Node
 
+
+class Node:
+    def __init__(self,value):
+        self.value = value
+        self.left = None
+        self.right = None
 def common_ancestor(node1, node2, tree):
-    
     depth1 = get_depth(node1,tree)
     depth2 = get_depth(node2,tree)
     delta = abs(depth1-depth2)
@@ -36,8 +42,7 @@ def test_common_ancestor():
     assert common_ancestor(1,6,tree) == 5
     tree = {1:2,3:2,2:5,6:5,5:5}
     assert common_ancestor(1,3,tree) == 2
-    tree = {1:2,3:2,2:5,6:5,5:5}
-    assert common_ancestor(1,3,tree) == 2
+            
 test_common_ancestor()
 
     
