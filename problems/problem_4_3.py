@@ -3,7 +3,7 @@ List of Depths: Given a binary tree, design an algorithm which creates a linked 
 at each depth (e.g., if you have a tree with depth D, you'll have D linked lists).
 """
 
-def create_depth_linked_lists(node,depth, depth_linked_lists):
+def create_depth_linked_lists(node,depth,depth_linked_lists):
     if node == None:
         return
     depth_linked_lists[depth+1] = None

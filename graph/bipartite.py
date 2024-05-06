@@ -4,8 +4,9 @@ from graph_adjacency_list import Graph
 def is_bipartite(graph:Graph):
     node_color = {}
     to_visit = []
-    to_visit.append(graph.get_nodes()[0])
-    node_color[graph.get_nodes()[0]] = 0
+    initial_node = graph.get_nodes()[0]
+    to_visit.append(initial_node)
+    node_color[initial_node] = 0
     while len(to_visit) > 0:
         node = to_visit.pop()
         for neighbor in graph.get_neighbors(node):

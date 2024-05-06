@@ -10,10 +10,21 @@ def sparse_search(input,key):
 
 	while start <= end:
 		mid = (start+end)//2
-		while input[mid] == "":
-			mid+=1
+		if input[mid] == "":
+			goLeft = goRight = mid
+			while input[goLeft] == "" and input[goRight] == "":
+				if goLeft > start:
+					goLeft-=1
+				if goRight < end:
+					goRight+=1
+				if goLeft <= start and goRight >=end:
+					return -1
+			if input[goLeft] != "":
+				mid = goLeft
+			else:
+				mid = goRight
 		if input[mid] == key:
-			return mid;
+			return mid
 		elif input[mid] < key:
 			start = mid+1
 		else:	
@@ -22,6 +33,7 @@ def sparse_search(input,key):
 
 def test_sparse_search():
 	assert sparse_search(["at","","","","ball","","","car","","","dad","",""],"ball") == 4
+	assert sparse_search(["","",""],"ball") == -1
 
 test_sparse_search()
 

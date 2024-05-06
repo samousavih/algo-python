@@ -1,5 +1,6 @@
 """
-String Rotation; Assume you have a method i s S u b s t r i n g which checks if one word is a substring of another. Given two strings, si and s2, write code to check if s2 is a rotation of si using only one call to isSubst ring [e.g., "waterbottle" is a rotation oP'erbottlewat")
+String Rotation; Assume you have a method is_substring which checks if one word is a substring of another.
+Given two strings, si and s2, write code to check if s2 is a rotation of si using only one call to is_Substring [e.g., "waterbottle" is a rotation of'erbottlewat")
 """
 
 def is_rotation(s1,s2):
