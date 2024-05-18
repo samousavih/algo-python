@@ -65,7 +65,7 @@ def find_cheap_flight(flights,src,dst,k):
                 to_visit.put((distance[next],next))
                 tree[next] = current
 
-    dist,number_of_nodes = distance[current]
+    dist,number_of_nodes = distance[dst]
     if dist == float('inf') or number_of_nodes > k:
         return -1
     return dist 

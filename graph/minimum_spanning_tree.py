@@ -7,6 +7,7 @@ def minimum_spanning_tree(g:WeightedGraph):
     The key to understanding this algo is always we want to find a node which has the lowest weighted edge from the tree.
     "if w < weight_from_tree[node]:" this condition is for optmisation as if we already know the distance from tree to node N is W and then
     we found another edge which reach us to N which has a weight larger than W so we don't need to add that into the min heap. 
+    O((V+E)LogE)
     """
     min_heap = PriorityQueue()
     parent = {}
@@ -18,15 +19,15 @@ def minimum_spanning_tree(g:WeightedGraph):
     for node,w in g.get_neighbors(zero):
         min_heap.put((w,(zero,node))) # O(E)
         weight_from_tree[node] = w
-    while not min_heap.empty():
-        _,(s, t) = min_heap.get()
+    while not min_heap.empty(): #O(E)
+        _,(s, t) = min_heap.get() #O(ELogE)
         if t not in parent and s in parent:
             parent[t] = s
-            for node,w in g.get_neighbors(t):
+            for node,w in g.get_neighbors(t): #O(E)
                 if node not in parent:
                     if w < weight_from_tree[node]: 
                         weight_from_tree[node] = w
-                        min_heap.put((w,(t,node)))
+                        min_heap.put((w,(t,node))) #O(VLogE)
 
     return parent
 
