@@ -38,7 +38,7 @@ All the values of coins are unique.
 """
 
 """
-intuition: the number of ways to make up a some with some number of coins is the sum of ways to make the number without last coin and number of ways adding the last coin would create.
+intuition: the number of ways to make up a sum with some number of coins is the sum of ways to make the number without last coin and number of ways adding the last coin would create.
 the number of ways adding the new coin would create is the number of ways the amount - last coin would have without the coin as we can add the last coin to all of them.
 """
 

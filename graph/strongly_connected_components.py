@@ -36,7 +36,7 @@ def is_strongly_connected(graph:DirectedGraph):
 
 def strongly_connected_components(graph:DirectedGraph):
     """
-    This is done using tow DFS passes. The key to understanding this algo is to imagine the graph in strongly connected components as big nodes and edges between 
+    This is done using two DFS passes. The key to understanding this algo is to imagine the graph in strongly connected components as big nodes and edges between 
     those components. Another key point is if C1---->C2 meaning there is an edge from C1 to C2 there is at least one node in C1 which finishes after all nodes in C2.
     So if we build a stack in the order of finishing time of nodes in DFS and then do another reverse DFS all of connected components would be strongly connected components.
     Reason is in the reverse graph it would be C1<-----C2 and if you do a DFS on C1 you would never get nodes of C2.
@@ -44,7 +44,6 @@ def strongly_connected_components(graph:DirectedGraph):
     visited = set()
     finished_stack = []
     to_visit_stack = []
-    components =[]
     for node in graph.get_nodes():
         if node not in visited:
             to_visit_stack.append(node)
@@ -60,7 +59,8 @@ def strongly_connected_components(graph:DirectedGraph):
                         to_visit_stack.append(neighbor)
     visited = set()
     to_visit_stack = []
-    component=[]
+    components = []
+    component = []
     while len(finished_stack) > 0 :
         if len(component) > 0:
             components.append(component)

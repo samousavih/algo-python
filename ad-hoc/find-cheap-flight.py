@@ -57,8 +57,8 @@ def find_cheap_flight(flights,src,dst,k):
     tree[src] = None
     while not to_visit.empty():
         _,current = to_visit.get()
+        dist_current,number_of_nodes_current = distance[current]
         for next,w in get_neighbors(current,flights):
-            dist_current,number_of_nodes_current = distance[current]
             dist_next,_ = distance[next]
             if number_of_nodes_current + 1 <= k and dist_next > dist_current + w:
                 distance[next] = (dist_current + w,number_of_nodes_current + 1)

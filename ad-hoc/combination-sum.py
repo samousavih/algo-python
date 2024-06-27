@@ -82,6 +82,7 @@ def combinationSum_util(B,arr,sofar, sol):
        if a <= B:        
             sofar += [a]
             result = combinationSum_util(B-a,arr[index:], sofar, sol) 
+            #print(sofar)
             if result:
                 sol+=[sofar.copy()]
             sofar.pop()

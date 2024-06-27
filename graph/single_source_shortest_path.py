@@ -7,24 +7,25 @@ import time
 def single_source_shortest_path_with_min_heap(graph:WeightedGraph,source, dest):
     """
     min heap over regular queue is more efficient as takes less step
+    O((E+V)LogV)
     """
     distance = {}
     tree = {}
     to_visit = PriorityQueue()
     for node in graph.get_nodes():
-        distance[node] = float("INF")
+        distance[node] = float("INF") # O(V)
     tree[source] = None
     distance[source] = 0
     to_visit.put((0,source))
     i=0    
     while not to_visit.empty():
-        _,next = to_visit.get()
+        _,next = to_visit.get() # O(VLogV)
         for neighbor,w in graph.get_neighbors(next):
             if distance[next] + w < distance[neighbor]:
                 distance[neighbor]= distance[next] + w
                 tree[neighbor] = next
                 i+=1
-                to_visit.put((distance[neighbor],neighbor))
+                to_visit.put((distance[neighbor],neighbor)) #O(ELogV)
     print(f'steps wih min heap:{i}')
     node = dest
     path = []

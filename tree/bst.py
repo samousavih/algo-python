@@ -61,6 +61,10 @@ class BST_Node:
         if self.left:
             return self.left.get_min()
         return self.value
+    def get_min_node(self):
+        if self.left:
+            return self.left.get_min_node()
+        return self
     def get_max(self):
         if self.right:
             return self.right.get_max()
@@ -73,23 +77,27 @@ class BST_Node:
             if not self.right.is_bst():
                 return False
         return True
+    def replaceWithNode(self,node):
+        if node != None:
+            node.parent = self.parent
+        if self.parent == None:
+            self = node
+        if self.parent.left == self:
+            self.parent.left = node
+        else:
+            self.parent.right = node
     def delete(self, value):
         if self.value == value:
-            successor,parent = self.find_successor()
-            if successor == None:
-                self.value = None
+            if self.right == None and self.left == None:
+                self.replaceWithNode(None)
+            elif self.right == None:
+                self.replaceWithNode(self.left)
+            elif self.left == None:
+                self.replaceWithNode(self.right)
             else:
-                if successor == self.left:
-                    self.value = successor.value
-                    self.left = successor.left
-                    self.right = successor.right
-                elif successor == self.right:
-                    self.value = successor.value
-                    self.right =  successor.right    
-                else:
-                    self.value = successor.value
-                    parent.left = None
-                    successor.value = None
+                min = self.right.get_min()
+                self.value = min
+                self.right.delete(min)
             return
         if self.left and value <= self.value:
             self.left.delete(value)
@@ -114,6 +122,8 @@ class BST_Node:
         if self.right and value > self.value:
             return self.right.get_node(value)
         return None
+    def set_None(self):
+        self = None
 
 
 def get_tree_1():
@@ -136,6 +146,9 @@ def main():
     print(f"min : {tree.get_min()}")
     print(f"max : {tree.get_max()}")
     print(f"is bst : {tree.is_bst()}")
+    tree = get_tree_1()
+    tree.set_None()
+    print(tree.in_order())
 
 def test_tree_delete():
     tree = get_tree_1()
@@ -154,7 +167,10 @@ def test_tree_delete():
     tree.delete(6)
     assert tree.in_order() == [2,3,4,5,5.5]
 
+   
+
 test_tree_delete()
     
 if __name__ == "__main__":
+    
     main()
