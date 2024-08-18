@@ -44,6 +44,8 @@ def is_perm_optimised(s,t):
 
 def test_is_perm():
 	assert is_perm("ABCD","BACD") == True
+	assert is_perm("ABACD","BAACD") == True
+	assert is_perm("ABACD","BAAACD") == False
 	assert is_perm("ABCD","BACED") == False
 	assert is_perm_optimised("ABCD","BACED") == False
 	assert is_perm_optimised("ABCD","BACD") == True

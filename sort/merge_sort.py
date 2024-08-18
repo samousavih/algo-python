@@ -14,20 +14,16 @@ def merge(array,start,mid,end):
     for k in range(start,end+1):
         if i > mid and j <= end:
             array[k] = temp_array[j]
-            k+=1
             j+=1
         if j > end and i <= mid:
             array[k] = temp_array[i]
-            k+=1
             i+=1
         elif j <= end and i <= mid: 
             if temp_array[i] <= temp_array[j]:
                 array[k] = temp_array[i]
-                k+=1
                 i+=1
             else:
                 array[k] = temp_array[j]
-                k+=1
                 j+=1
 
 def merge_sort_bottom_up(array):

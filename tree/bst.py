@@ -65,6 +65,10 @@ class BST_Node:
         if self.left:
             return self.left.get_min_node()
         return self
+    def get_max_node(self):
+        if self.right:
+            return self.right.get_max_node()
+        return self
     def get_max(self):
         if self.right:
             return self.right.get_max()
@@ -103,17 +107,6 @@ class BST_Node:
             self.left.delete(value)
         if self.right and value > self.value:
             self.right.delete(value)
-
-    def find_successor(self):
-        if not self.right and not self.left:
-            return None,self
-        if self.right:
-            successor = self.right
-            while successor.left is not None :
-                parent = successor
-                successor = successor.left
-            return successor,parent
-        return self.left,self
     def get_node(self,value):
         if self.value == value:
             return self

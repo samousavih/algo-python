@@ -3,8 +3,9 @@ from directed_graph_adjacency_list import DirectedGraph
 
 def topological_sort(graph:DirectedGraph):
     """
-    Starts by calculating in degree of each node and then does a DFS starting with nodes with in degree 0.
-    When discovering neighbors of a node decreases the in degree of them by one and continues the DFS for the ones with in degree 0.
+    Starts by calculating in-degree of each node and then does a DFS starting with nodes with in-degree 0.
+    When discovering neighbors of a node decreases the in-degree of them by one and continues the DFS for the ones with in-degree 0.
+    O(V+E)
     """
 
     visited = set()
@@ -12,21 +13,21 @@ def topological_sort(graph:DirectedGraph):
     in_degree = {}
     sorted = []
 
-    for node in graph.get_nodes():
+    for node in graph.get_nodes(): #O(V)
         in_degree[node] = 0
     
     for node in graph.get_nodes():
-        for neighbor in graph.get_neighbors(node):
+        for neighbor in graph.get_neighbors(node): #O(E)
             in_degree[neighbor]+=1
-    for node in in_degree:
+    for node in in_degree: #O(V)
         if in_degree[node] == 0:
             to_visit.put(node) 
-    while not to_visit.empty():
+    while not to_visit.empty(): #O(V)
         current = to_visit.get()
         if current not in visited:
             visited.add(current)
             sorted.append(current)
-            for node in graph.get_neighbors(current):
+            for node in graph.get_neighbors(current): #O(E)
                 in_degree[node]-=1
                 if in_degree[node] == 0:
                     to_visit.put(node)

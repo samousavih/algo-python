@@ -8,6 +8,8 @@ def single_source_shortest_path_with_min_heap(graph:WeightedGraph,source, dest):
     """
     min heap over regular queue is more efficient as takes less step
     O((E+V)LogV)
+
+    finds minimum distance from single source to all nodes
     """
     distance = {}
     tree = {}

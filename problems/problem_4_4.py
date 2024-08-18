@@ -7,14 +7,8 @@ node never differ by more than one.
 def check_tree_is_balance(root):
     if root == None:
         return True,0
-    left_is_balanced = True
-    left_hight = 0
-    right_is_balanced = True
-    right_hight = 0
-    if root.left != None:
-        left_is_balanced,left_hight =  check_tree_is_balance(root.left)
-    if root.right != None:
-        right_is_balanced,right_hight = check_tree_is_balance(root.right)
+    left_is_balanced,left_hight =  check_tree_is_balance(root.left)
+    right_is_balanced,right_hight = check_tree_is_balance(root.right)
     
     hight = max(right_hight,left_hight)+1
     

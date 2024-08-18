@@ -20,7 +20,8 @@ def successor(node:BST_Node):
         parent = child.parent
     return parent
 
-def test_in_order_successor():
+
+def test_in_order_successor(successor):
     bst = BST_Node(20)
     bst.insert(9)
     bst.insert(25)
@@ -42,4 +43,4 @@ def test_in_order_successor():
         else:
             assert succ == y        
 
-test_in_order_successor()
+test_in_order_successor(successor)
