@@ -9,7 +9,7 @@ a10 a11 a12 a13      a31 a21 a11 a01
 a20 a21 a22 a23      a32 a22 a12 a02
 a30 a31 a32 a33      a33 a23 a13 a03
 
-This is done layer buy layer
+This is done layer by layer
 """
 def rotateMatrix90(matrix,n):
 

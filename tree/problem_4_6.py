@@ -1,6 +1,23 @@
 """
 Successor: Write an algorithm to find the "next" node (i.e., in-order successor) of a given node in a
 binary search tree. You may assume that each node has a link to its parent.
+
+note: the successor of a node is the node with the smallest key greater than the key of the input node.
+it has two cases: 
+1. if the node has a right child, then the successor is the leftmost node of the right child.
+2. if the node doesn't have a right child, then the successor is the first parent that is greater than the node.
+
+In the example below if the input is 6 the next node is 8, because 6 doesn't have a right child,
+so we move up so we reach a node whichc the current node is the left child of it, so the successor is the parent of the current node.
+
+        8
+       / \
+      3   10
+     / \    \
+    1   6    14
+       /    
+      4   
+
 """
 
 from bst import BST_Node

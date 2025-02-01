@@ -100,11 +100,26 @@ def get_test_graph_5():
 
     return dg
 
+def get_test_graph_1():
+    """
+    """
+    dg = DirectedGraph()
+    dg.insert_edge(0, 1)
+    dg.insert_edge(0, 2)
+    dg.insert_edge(2, 3)
+    dg.insert_edge(1, 3)
+
+    return dg
+
+
 
 def test_connected_components():
     dg = get_test_graph_5()
     dg.show()
+    dg = get_test_graph_1()
+    dg.show()
 
+    assert(is_strongly_connected(dg) == False)
     assert(is_strongly_connected(dg) == False)
 
 def test_strongly_connected_components():
@@ -112,6 +127,10 @@ def test_strongly_connected_components():
 
     components = strongly_connected_components(dg)
     assert (components == [[8, 9, 11, 10], [7], [0], [2, 3, 1], [5, 4, 6]])
+
+    dg = get_test_graph_1()
+    components = strongly_connected_components(dg)
+    print(components)
 
 
 test_connected_components()

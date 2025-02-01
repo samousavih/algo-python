@@ -35,9 +35,9 @@ def swap(arr,i,j):
 
 def test_k_largest():
     array = [5,3,6,9,12,6,6,25,0]
-    array_copy = array.copy()
-    array_copy.sort()
-    assert selection_k_largest(array,len(array)-1) == array_copy[len(array)-1]
-    assert selection_k_largest(array,len(array)//2) == array_copy[len(array)//2]
+    array_sorted = array.copy()
+    array_sorted.sort()
+    assert selection_k_largest(array,len(array)-1) == array_sorted[len(array)-1]
+    assert selection_k_largest(array,len(array)//2) == array_sorted[len(array)//2]
 
 test_k_largest()

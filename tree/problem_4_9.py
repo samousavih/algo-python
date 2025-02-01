@@ -4,7 +4,18 @@ and inserting each element. Given a binary search tree with distinct elements, p
 arrays that could have led to this tree.
 EXAMPLE
 Input:
+        2
+       / \
+      1   3
 Output: {2, 1, 3}, {2, 3, 1} 
+
+           2
+       /       \
+      1         3
+    /  \      /   \
+   0    1.5  2.5   4
+
+output = {2, 1,0,1.5 , 3,2.5,4 }, {2, 1,3,0,1.5}
 """
 class Node:
     def __init__(self,value):
@@ -52,6 +63,27 @@ def mix(array1,array2):
 
     return result
 
+def possible_arrays_2(tree):
+    if tree == None:
+        return []
+    result = []
+    if tree.left == None and tree.right == None:
+        result.append([tree.value])
+        return result
+
+    lef_comb = possible_arrays_2(tree.left)
+    right_comb = possible_arrays_2(tree.right)
+
+    for array in lef_comb:
+        result.append([tree.value]+array)
+    
+    
+    for array in right_comb:
+        result.append([tree.value]+array)
+     
+    return result
+
+
 def test_possible_arrays():
     node= Node(2)
     node.left = Node(1)
@@ -59,6 +91,7 @@ def test_possible_arrays():
     node.right.left = Node(2.5)
     node.right.right = Node(5)
     print(possible_arrays(node))
+    print(possible_arrays_2(node))
 test_possible_arrays()
 
 

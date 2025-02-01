@@ -16,19 +16,24 @@ Explanation: The longest substrings without repeating characters are â€œEKSFORGâ
 def lengthOfLongestNoRepeat(s):
     map = {}
     maxLength = 0
-    lastIndex = 0
+    start = 0
     for index,c in enumerate(s):
-        if c in map:
-            
-            maxLength = max(maxLength,index-lastIndex)
-            map[c] = index
-            lastIndex = index
-        else:
-            map[c] = index
-    
-    maxLength = max(maxLength,index-lastIndex)
+        if c in map and map[c] >= start :
+            maxLength = max(maxLength,index-start)
+            start = map[c] + 1    
+        map[c] = index
+    maxLength = max(maxLength,len(s)-start)
     return maxLength
-print(lengthOfLongestNoRepeat("ABCDEFGABEF"))
-print(lengthOfLongestNoRepeat("ABCADEDFGABEF"))
-print(lengthOfLongestNoRepeat("GEEKSFORGEEKS"))
+
+assert lengthOfLongestNoRepeat("ABCDEFGABEF") == 7
+assert lengthOfLongestNoRepeat("GEEKSFORGEEKS") == 7
+assert lengthOfLongestNoRepeat("ABCADEDFGABEF") == 6
+assert lengthOfLongestNoRepeat("BBBBBB") == 1
+assert lengthOfLongestNoRepeat("PWWKEW") == 3
+assert lengthOfLongestNoRepeat("DVDF") == 3
+assert lengthOfLongestNoRepeat("") == 0
+assert lengthOfLongestNoRepeat("A") == 1
+assert lengthOfLongestNoRepeat("AB") == 2
+assert lengthOfLongestNoRepeat("AA") == 1
+# 
         

@@ -25,6 +25,21 @@ class LinkedList:
         self.value = item
         self.next = None
 
+linkedLists = {}
+
+def create_depth_linked_lists_2(node,depth):
+    if node == None:
+        return
+    if depth not in linkedLists:
+        linkedLists[depth] = LinkedList(node.value)
+    else:
+        linkedLists[depth].next = LinkedList(node.value)
+    create_depth_linked_lists_2(node.left,depth+1)
+    create_depth_linked_lists_2(node.right,depth+1)
+
+
+
+
 def test_create_depth_linked_lists():
     root = Node(5)
     root.left = Node(6)
@@ -34,7 +49,14 @@ def test_create_depth_linked_lists():
     result[0] = None
     create_depth_linked_lists(root,0,result)
     
+    
     assert result[2].value == 8
     assert result[2].next.value == 7
     assert result[0].value == 5
+
+    create_depth_linked_lists_2(root,0)
+    assert linkedLists[2].value == 8
+    assert linkedLists[2].next.value == 7
+    assert linkedLists[0].value == 5
+
 test_create_depth_linked_lists()

@@ -2,6 +2,7 @@
 2) for a binary search or similar algo use ``(start+end)//2``
 3) ```int(int(first)/int(second))`` does return always truncate to Zero while ``(start+end)//2`` would always truncate down ``-3/2 = -2(-1.5)``
 4) to check if a string is a number you can do ``i.isnumeric()``
+5) when you see two arrays in a problem, one of the first question is can I solve with a hash map? Also double check the range of numbers
 
 
 -----

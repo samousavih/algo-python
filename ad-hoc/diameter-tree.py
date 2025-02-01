@@ -1,3 +1,5 @@
+
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -6,7 +8,7 @@
 #         self.right = right
 
 """
-
+The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two leaves in the tree. 
 """
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
@@ -16,9 +18,11 @@ class Solution:
     def diameterOfBinaryTreeRec(self,root):
         if root == None:
             return 0,0
-        leftDiameter,leftDepth = self.diameterOfBinaryTreeRec(root.left)
-        rightDiameter,rightDepth = self.diameterOfBinaryTreeRec(root.right)
-        return max(leftDiameter,rightDiameter,leftDepth+rightDepth),max(leftDepth,rightDepth)+1
+        leftDiameter,leftHeight = self.diameterOfBinaryTreeRec(root.left)
+        rightDiameter,rightHeight = self.diameterOfBinaryTreeRec(root.right)
+        height = max(leftHeight,rightHeight)+1
+        diameter = max(leftDiameter,rightDiameter,height)
+        return diameter,height
 
 
 """
@@ -49,3 +53,4 @@ class Solution:
         diameter(root, res)
         # Return the maximum diameter encountered
         return res[0]
+    

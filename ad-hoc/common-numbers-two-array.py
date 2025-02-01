@@ -28,6 +28,7 @@ n == nums1.length
 m == nums2.length
 1 <= n, m <= 100
 1 <= nums1[i], nums2[i] <= 100
+[1,2,3,3,4] ,  [2,2,2,3,5,6]
 """
 
 class Solution:

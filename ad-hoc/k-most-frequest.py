@@ -9,5 +9,5 @@ Answer 1:
 Answer 2:
     keep a HashMap for word index and frequency and a min heap with size K(assuming K is constant) with index and frequency
 
-    as adding a word update the index in Hashmap and frequency, if updated frequency is less than the min, add the new one instead of min and sift down and then remove the last element.
+    as adding a word update the index in Hashmap and frequency, if updated frequency is more than the min, add the new one instead of min and sift down and then remove the last element.
 """
