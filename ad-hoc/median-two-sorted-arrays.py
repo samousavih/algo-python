@@ -28,6 +28,19 @@ Expected Auxiliary Space: O((n+m)/2).
 Constraints: 
 0 ≤ m,n ≤ 106
 1 ≤ array1[i], array2[i] ≤ 109
+
+Explanation :
+we devide A into two part a1 and a2, B into B1 and B2
+
+{1,5  ,9}
+{2,3  ,6,7}
+
+{1,2,3,5,6,9]
+
+{4,   6}
+{1,2 ,3,5}
+
+{1,2,3,4,5,6}
 """
 
 def MedianOfArrays(a,b):

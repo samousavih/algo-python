@@ -1,3 +1,6 @@
+#Note :  The algorithm needs to be modified as we have duplicated keys
+# Find the one with duplicated keys
+
 def selection_k_largest(arr,k):
     
     low = 0

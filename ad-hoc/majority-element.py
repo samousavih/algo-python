@@ -45,11 +45,13 @@ Constraints:
 
 find median
 count how many equal to median if > N/2 true else false
+Note :  The median algorithm needs to be modified as we have duplicated keys
 
 """
 
 def majorityElement(arr):
     median = find_median(arr)
+    print(arr)
     count=0
     for a in arr:
         if a == median:
@@ -94,12 +96,66 @@ def swap(arr,i,j):
     arr[j] = arr[i]          
     arr[i] = temp
 
-def test_majorityElement():
-    arr = [3,1,3,3,2]
-    assert majorityElement(arr) == 3
-    arr = [1,2,3]
-    assert majorityElement(arr) == -1
-    arr =[3, 3, 4, 2, 4, 4, 2, 4, 4]
-    assert majorityElement(arr) == 4
+def majority_element_2(arr):
+    n = len(arr)
+    candidate = -1
+    count = 0
 
+    # Find a candidate
+    for num in arr:
+        if count == 0:
+            candidate = num
+            count = 1
+        elif num == candidate:
+            count += 1
+        else:
+            count -= 1
+
+    # Validate the candidate
+    count = 0
+    for num in arr:
+        if num == candidate:
+            count += 1
+
+    # If count is greater than n / 2, return the candidate; otherwise, return -1
+    if count > n // 2:
+        return candidate
+    else:
+        return -1
+
+def test_majorityElement():
+    # arr = [3,1,3,3,2]
+    # assert majorityElement(arr) == 3
+    # arr = [1,2,3]
+    # assert majorityElement(arr) == -1
+    # arr =[3, 3, 4, 2, 4, 4, 2, 4, 4]
+    # assert majorityElement(arr) == 4
+    arr = [2, 2, 1, 1, 1, 2, 2]  # [1,1,1,2,2,2,2]
+    print(majorityElement(arr))
+    assert majorityElement(arr) == 2
+    arr = [1, 1, 1, 1, 2, 2, 2]
+    assert majorityElement(arr) == 1
+    arr = [1]
+    assert majorityElement(arr) == 1
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    assert majorityElement(arr) == -1
+    arr = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+    assert majorityElement(arr) == 2
+    arr = [3,1,3,3,2]
+    assert majority_element_2(arr) == 3
+    arr = [1,2,3]
+    print(majority_element_2(arr))
+    assert majority_element_2(arr) == -1
+    arr =[3, 3, 4, 2, 4, 4, 2, 4, 4]
+    assert majority_element_2(arr) == 4
+    arr = [2, 2, 1, 1, 1, 2, 2]
+    assert majority_element_2(arr) == 2
+    arr = [1, 1, 1, 1, 2, 2, 2]
+    assert majority_element_2(arr) == 1
+    arr = [1]
+    assert majority_element_2(arr) == 1
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    assert majority_element_2(arr) == -1
+    arr = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+    assert majority_element_2(arr) == 2
 test_majorityElement()
