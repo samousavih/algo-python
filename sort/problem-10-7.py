@@ -1,7 +1,11 @@
 """
 Missing Int: Given an input file with four billion non-negative integers, provide an algorithm to generate an integer that is not contained in the file.
 Assume you have 1 GB of memory available for this task.
-"""
+
+4B 4G =  2^32  2^8 =256 2^9 = 512 2^10 = 1 MB 2^20 = 1GB 2^30 = 1GB and 2^32 = 4GB
+
+32 bit and 2^5 *2^31 = 2^36
+ """
 
 def find_missing_int():
 
